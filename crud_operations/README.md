@@ -63,3 +63,25 @@ A saída do comando abaixo ilustra a quantidade de documentos cujo conteúdo cor
 ````BAsh
 db.books.replaceOne({_id: ObjectId("aaaa")}, {novo_documento})
 ````
+
+## Atualização de documentos em uma collection
+
+Sintaxe geral:
+
+````Bash
+db.collection.updateOne(
+    <filter>,
+    <update>,
+    <options>
+)
+````
+
+Dentro do `update`, podemos utilizar métodos como `$set` e `$push`:
+
+- $set:
+    - Cria novos campos e valores dentro do documento caso não existam
+    - Ou atualizam valores de campos no documento caso existam
+    - Neste operador, `upsert: true` indica que o mongo deve inserir um novo documento na collection com as informações caso o filtro não retorne nenhum documento
+- $push:
+    - Adiciona um novo valor a um Array caso o array já exista
+    - Ou cria um novo Array com o valor definido como elemento 
