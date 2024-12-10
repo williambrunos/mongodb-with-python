@@ -26,6 +26,8 @@ Para filtrar os documetos de uma collection filtrando pela igualdade de um atrib
 db.grades.find( {student_id: 1111} )
 ````
 
+O comando find usand operador de igualdade retorna documentos que possuam o valor escalar do campo igual ao valor especificado, ou que contenha o valor especificado presente dentro de um Array.
+
 Podemos utilizar o ````$in```` para filtrar todos os documentos cujos valores dos campos estejam presentes dentro de uma lista de valores pré-definida:
 
 ````Bash
@@ -52,4 +54,12 @@ db.sales.find( {"items.price": {"$lte": 100}} )
 
 ````Bash
 db.sales.find( {"items.price": {"$gte": 100}} )
+````
+
+## Replace de documentos em uma collection
+
+A saída do comando abaixo ilustra a quantidade de documentos cujo conteúdo corresponde ao filtro utilizado no comando.
+
+````BAsh
+db.books.replaceOne({_id: ObjectId("aaaa")}, {novo_documento})
 ````
